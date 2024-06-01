@@ -15,7 +15,15 @@ class userController extends Controller
         if(request()->ajax()){
             $users = DB::table('mahasiswa')->get();
 
-            return Datatables::of($users)->make();
+            return Datatables::of($users)
+            ->addColumn('option', function($users){
+                return '
+                <a href="'.route('user.edit', $users->id).'" class="btn btn-sm btn-success">Edit</a>
+                <button class="btn btn-sm btn-danger" onclick="onDelete(this)" id="'.$users->id.'">Hapus</button>
+                ';
+            })
+            ->rawColumns(['option'])
+            ->make();
         }
 
         return view('user.index');

@@ -9,14 +9,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{ asset('dist/img/default-150x150.png') }}" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <p class="d-block">{{ Auth::user()->nama }}</p>
-        </div>
-      </div>
+
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">
@@ -43,7 +36,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="{{ route('keluhan.index') }}" class="nav-link bg-transparent">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>Daftar Keluhan</p>
             </a>
           </li>
@@ -56,7 +49,7 @@
           @can('administrator')
           <li class="nav-item menu-open">
             <a href="{{ route('user.index') }}" class="nav-link bg-transparent">
-              <i class="nav-icon fas fa-user"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>Akun User</p>
             </a>
           </li>

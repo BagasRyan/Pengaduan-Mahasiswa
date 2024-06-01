@@ -1,16 +1,25 @@
 @extends('layout.app')
 
 @section('content')
+<div class="p-3">
+    <h3>Akun User</h3>
+    <p>Daftar Akun yang terdaftar di aplikasi</p>
+</div>
 <a href="{{ route('user.create') }}" class="m-2 btn btn-primary">Tambah Data</a>
-<table class="table table-stripped" id="table">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Email</th>
-        </tr>
-    </thead>
-</table>
+<div class="card">
+    <div class="card-body">
+        <table class="table table-stripped" id="table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Opsi</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
 @endsection
 
 @push('script')

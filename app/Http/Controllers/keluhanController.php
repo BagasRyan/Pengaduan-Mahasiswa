@@ -17,20 +17,19 @@ class keluhanController extends Controller
             $data = DB::table('keluhan')->get();
             
             return Datatables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($data){
-                    return `
-                    <a href="" class="btn btn-success btn-sm"><i class="fas fa-pen"></i></a>
-                    <button onclick="onDelete(this)"  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                    `;
-                })
-                ->rawColumns(['action'])
-                ->make();
+            ->addColumn('option', function($data){
+                return '
+                <a href="'.route('keluhan.edit', $data->id).'" class="btn btn-sm btn-success">Edit</a>
+                <button class="btn btn-sm btn-danger" onclick="onDelete(this)" id="'.$data->id.'">Hapus</button>
+                ';
+            })
+            ->rawColumns(['option'])
+            ->make();
         }
 
         $keluhan = DB::table('keluhan')->get();
 
-        return view('keluhan.index', compact('keluhan'));
+        return view('keluhan.index');
     }
 
     public function create(){
@@ -106,14 +105,22 @@ class keluhanController extends Controller
     }
 
     public function myComplaint($id){
-        
+
         if(request()->ajax()){
             
             $keluhan = DB::table('keluhan')->where('id_mahasiswa', $id)->get();
 
-            return Datatables::of($keluhan)->make();
+            return Datatables::of($keluhan)
+            ->addColumn('option', function($data){
+                return '
+                <a href="'.route('keluhan.edit', $data->id).'" class="btn btn-sm btn-success">Edit</a>
+                <button class="btn btn-sm btn-danger" id="'.$data->id.'">Hapus</button>
+                ';
+            })
+            ->rawColumns(['option'])
+            ->make();
         }
 
-        return view('keluhan.myComplaint', compact('id'));
+        return view('keluhan.myComplaint');
     }
 }

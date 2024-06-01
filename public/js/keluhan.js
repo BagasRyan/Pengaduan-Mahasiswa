@@ -7,7 +7,6 @@ $(document).ready(function(){
             url: '/keluhan'
         },
         columns: [{
-            width: "5%",
             render: function(data, type, row, meta) {
                 return meta.row + meta.settings._iDisplayStart + 1;
             },
@@ -27,6 +26,12 @@ $(document).ready(function(){
         {
             data: 'status',
             name: 'status'
+        },
+        {
+            data: 'option',
+            name: 'option',
+            orderTable: false,
+            searchTable: false,
         }
     ]
     });
@@ -62,10 +67,9 @@ function onDelete(data){
                         text: data.message,
                         icon: 'success',
                         showConfirmButton: false,
-                        timer: 1500,
-                        didClose: function(){
-                            window.location.reload();
-                        }
+                        timer: 1500
+                    }).then(function(){
+                        $('#table').DataTable().ajax.reload();
                     })
                     } else {
                         Swal.fire({

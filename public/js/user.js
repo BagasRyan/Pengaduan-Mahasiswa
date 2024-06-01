@@ -6,7 +6,6 @@ $(document).ready(function(){
             url: '/user'
         },
         columns: [{
-            width: "5%",
             render: function(data, type, row, meta) {
                 return meta.row + meta.settings._iDisplayStart + 1;
             },
@@ -19,6 +18,12 @@ $(document).ready(function(){
             data: 'email',
             name: 'email'
         },
+        {
+            data: 'option',
+            name: 'option',
+            searchTable: false,
+            orderTable: false
+        }
     ]
     });
 });
@@ -51,10 +56,9 @@ function onDelete(data){
                         text: data.message,
                         icon: 'success',
                         showConfirmButton: false,
-                        timer: 1500,
-                        didClose: function(){
-                            window.location.reload();
-                        }
+                        timer: 1500
+                    }).then(function(){
+                        $('#table').DataTable().ajax.reload();
                     })
                     } else {
                         Swal.fire({

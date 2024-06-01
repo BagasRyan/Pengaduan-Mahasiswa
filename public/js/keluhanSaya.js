@@ -10,7 +10,6 @@ $(document).ready(function(){
             url: `/keluhan/${id}`,
         },
         columns: [{
-            width: "5%",
             render: function(data, type, row, meta) {
                 return meta.row + meta.settings._iDisplayStart + 1;
             },
@@ -30,6 +29,12 @@ $(document).ready(function(){
         {
             data: 'status',
             name: 'status'
+        },
+        {
+            data: 'option',
+            name: 'option',
+            searchTable: false,
+            orderTable: false
         }
     ]
     });
