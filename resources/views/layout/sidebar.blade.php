@@ -11,7 +11,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/default-150x150.png" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('dist/img/default-150x150.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <p class="d-block">{{ Auth::user()->nama }}</p>
@@ -58,12 +58,6 @@
             <a href="{{ route('user.index') }}" class="nav-link bg-transparent">
               <i class="nav-icon fas fa-user"></i>
               <p>Akun User</p>
-            </a>
-          </li>
-          <li class="nav-item menu-open">
-            <a href="{{ route('user.kategori.index') }}" class="nav-link bg-transparent">
-              <i class="nav-icon fas fa-user"></i>
-              <p>Kategori User</p>
             </a>
           </li>
           @endcan

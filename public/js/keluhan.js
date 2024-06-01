@@ -6,23 +6,27 @@ $(document).ready(function(){
         ajax: {
             url: '/keluhan'
         },
-        column: [{
+        columns: [{
             width: "5%",
             render: function(data, type, row, meta) {
                 return meta.row + meta.settings._iDisplayStart + 1;
             },
         },
         {
-            data: 'kode_laporan'
+            data: 'kode_laporan',
+            name: 'kode_laporan'
         },
         {
-            data: 'nama_mahasiswa'
+            data: 'nama_mahasiswa',
+            name: 'nama_mahasiswa'
         },
         {
-            data: 'keluhans'
+            data: 'keluhan',
+            name: 'keluhan'
         },
         {
-            data: 'status'
+            data: 'status',
+            name: 'status'
         }
     ]
     });

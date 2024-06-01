@@ -40,11 +40,4 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/user/update', 'userController@update')->name('user.update');
     Route::post('/user/delete/{id}', 'userController@delete')->name('user.delete');
 
-    // User Kategori Controller
-    Route::get('/userKategori', 'userKategoriController@index')->name('user.kategori.index');
-    Route::get('/userKategori/create', 'userKategoriController@create')->name('user.kategori.create');
-    Route::post('/userKategori/store', 'userKategoriController@store')->name('user.kategori.store');
-    Route::get('/userKategori/edit/{id}', 'userKategoriController@edit')->name('user.kategori.edit');
-    Route::post('/userKategori/update', 'userKategoriController@update')->name('user.kategori.update');
-    Route::post('/userKategori/delete/{id}', 'userKategoriController@delete')->name('user.kategori.delete');
 });

@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use DataTables;
 use Session;
 
 class userController extends Controller
 {
     public function index(){
 
-        $users = DB::table('mahasiswa')->get();
+        if(request()->ajax()){
+            $users = DB::table('mahasiswa')->get();
 
-        return view('user.index', compact('users'));
+            return Datatables::of($users)->make();
+        }
+
+        return view('user.index');
     }
 
     public function create(){

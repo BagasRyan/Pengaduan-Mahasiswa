@@ -18,6 +18,7 @@ class KeluhanMigration extends Migration
             $table->string('kode_laporan');
             $table->string('id_mahasiswa');
             $table->string('nama_mahasiswa');
+            $table->string('email');
             $table->string('no_telepon');
             $table->text('keluhan');
             $table->enum('status', ['Belum ditanggapi', 'Sudah ditanggapi']);

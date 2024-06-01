@@ -106,8 +106,14 @@ class keluhanController extends Controller
     }
 
     public function myComplaint($id){
-        $keluhan = DB::table('keluhan')->where('id_mahasiswa', $id)->get();
+        
+        if(request()->ajax()){
+            
+            $keluhan = DB::table('keluhan')->where('id_mahasiswa', $id)->get();
 
-        return view('keluhan.myComplaint', compact('keluhan'));
+            return Datatables::of($keluhan)->make();
+        }
+
+        return view('keluhan.myComplaint', compact('id'));
     }
 }

@@ -1,3 +1,28 @@
+$(document).ready(function(){
+    $('#table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: '/user'
+        },
+        columns: [{
+            width: "5%",
+            render: function(data, type, row, meta) {
+                return meta.row + meta.settings._iDisplayStart + 1;
+            },
+        },
+        {
+            data: 'nama',
+            name: 'nama'
+        },
+        {
+            data: 'email',
+            name: 'email'
+        },
+    ]
+    });
+});
+
 function onDelete(data){
     const CSRF_TOKEN = $('meta[name="csrf-token"]').attr("content");
     const id = data.id;
